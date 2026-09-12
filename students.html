@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Records — School ID Card Management System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app-shell" class="app-shell"></div>
+
+<template id="tpl-students-body">
+  <div class="page-head">
+    <div>
+      <h1>Student Records</h1>
+      <div class="sub"><span id="studentCountLabel">Loading students…</span></div>
+    </div>
+    <div class="page-head-actions">
+      <a href="add-student.html" class="btn btn-primary">＋ Add Student</a>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="table-toolbar">
+      <div class="search-box">
+        <span class="ic">🔍</span>
+        <input class="input" id="searchInput" placeholder="Search by name, GR number, or class…">
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <select class="input" id="classFilter" style="width:auto;min-width:150px;">
+          <option value="">All classes</option>
+        </select>
+        <select class="input" id="sectionFilter" style="width:auto;min-width:130px;">
+          <option value="">All sections</option>
+        </select>
+        <button class="btn btn-secondary btn-sm" id="printSelectedBtn">🖶 Print Selected</button>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th class="checkbox-cell"><input type="checkbox" class="select-box" id="selectAllBox"></th>
+            <th>Photo</th>
+            <th data-sort="studentName">Student Name <span class="arrow">▾</span></th>
+            <th data-sort="fatherName">Father Name <span class="arrow"></span></th>
+            <th data-sort="class">Class <span class="arrow"></span></th>
+            <th data-sort="section">Section <span class="arrow"></span></th>
+            <th data-sort="grNumber">GR Number <span class="arrow"></span></th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="studentsTbody">
+          <tr><td colspan="8"><div class="empty-state"><div class="ic">⏳</div><div class="t">Loading students…</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-foot">
+      <div class="page-info" id="pageInfo"></div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+</template>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="utils.js"></script>
+<script src="auth.js"></script>
+<script src="layout.js"></script>
+<script src="idcard.js"></script>
+<script src="students.js"></script>
+</body>
+</html>

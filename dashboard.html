@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — School ID Card Management System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app-shell" class="app-shell"></div>
+
+<template id="tpl-dashboard-body">
+  <div class="page-head">
+    <div>
+      <h1>Dashboard</h1>
+      <div class="sub">A quick overview of your school's student and staff ID cards.</div>
+    </div>
+    <div class="page-head-actions">
+      <a href="add-student.html" class="btn btn-secondary">＋ Add Student</a>
+      <a href="add-staff.html" class="btn btn-primary">＋ Add Staff</a>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="ic">🎓</div>
+      <div class="num" id="statTotalStudents">—</div>
+      <div class="label">Total Students</div>
+    </div>
+    <div class="stat-card ink">
+      <div class="ic">🧑‍💼</div>
+      <div class="num" id="statTotalStaff">—</div>
+      <div class="label">Total Staff</div>
+    </div>
+    <div class="stat-card gold">
+      <div class="ic">🪪</div>
+      <div class="num" id="statTotalCards">—</div>
+      <div class="label">ID Cards Generated</div>
+    </div>
+    <div class="stat-card green">
+      <div class="ic">🕒</div>
+      <div class="num" id="statAddedThisMonth">—</div>
+      <div class="label">Added This Month</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-head">
+        <h3>Recently Added</h3>
+        <div style="display:flex;gap:8px;">
+          <a href="students.html" class="btn btn-ghost btn-sm">Students →</a>
+          <a href="staff.html" class="btn btn-ghost btn-sm">Staff →</a>
+        </div>
+      </div>
+      <div class="panel-body" id="recentList">
+        <div class="empty-state"><div class="ic">⏳</div><div class="t">Loading...</div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h3>School Information</h3></div>
+      <div class="panel-body" id="schoolSummary">
+        <div class="empty-state"><div class="ic">⏳</div><div class="t">Loading...</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:20px;">
+    <div class="panel-head"><h3>Quick Actions</h3></div>
+    <div class="panel-body">
+      <div class="quick-actions">
+        <a href="add-student.html" class="quick-action">
+          <span class="ic">🎓</span>
+          <div class="t">Add Student</div>
+          <div class="d">Create a new student record</div>
+        </a>
+        <a href="add-staff.html" class="quick-action">
+          <span class="ic">🧑‍💼</span>
+          <div class="t">Add Staff</div>
+          <div class="d">Teacher or support staff</div>
+        </a>
+        <a href="print.html" class="quick-action">
+          <span class="ic">🖶</span>
+          <div class="t">Print Cards</div>
+          <div class="d">8 cards per A4 page</div>
+        </a>
+        <a href="settings.html" class="quick-action">
+          <span class="ic">⚙</span>
+          <div class="t">School Settings</div>
+          <div class="d">Logo, name & address</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="utils.js"></script>
+<script src="auth.js"></script>
+<script src="layout.js"></script>
+<script src="idcard.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

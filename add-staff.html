@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Staff — School ID Card Management System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app-shell" class="app-shell"></div>
+
+<template id="tpl-add-staff-body">
+  <div class="page-head">
+    <div>
+      <h1 id="formTitle">Add Staff</h1>
+      <div class="sub">Fill in the staff's details — the ID card preview updates as you type.</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-head"><h3>Staff Information</h3></div>
+      <div class="panel-body">
+        <form id="staffForm" novalidate>
+
+          <div class="field">
+            <label>Staff photo</label>
+            <div class="photo-upload">
+              <div class="photo-preview" id="photoPreview">📷</div>
+              <div class="photo-upload-actions">
+                <input type="file" id="photoInput" accept="image/*" class="visually-hidden">
+                <button type="button" class="btn btn-secondary btn-sm" id="photoPickBtn">Upload photo</button>
+                <span class="hint">JPG or PNG. Compressed automatically for storage.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-grid" style="margin-top:20px;">
+            <div class="field span-2">
+              <label for="staffName">Staff name *</label>
+              <input class="input" id="staffName" required placeholder="e.g. Ayesha Khan">
+              <div class="field-error" data-error-for="staffName">Please enter the staff's name.</div>
+            </div>
+
+            <div class="field span-2">
+              <label for="category">Staff category *</label>
+              <select class="input" id="category" required></select>
+              <div class="field-error" data-error-for="category">Please choose a staff category.</div>
+              <span class="hint">Choose Teaching Staff for teachers, or the matching role for support staff (peon, cleaner, worker, guard, etc).</span>
+            </div>
+
+            <div class="field">
+              <label for="relationType">Relation type *</label>
+              <select class="input" id="relationType" required>
+                <option value="Father">Father</option>
+                <option value="Husband">Husband</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="relationName">Relation name *</label>
+              <input class="input" id="relationName" required placeholder="e.g. Muhammad Khan">
+              <div class="field-error" data-error-for="relationName">Please enter this field.</div>
+            </div>
+
+            <div class="field span-2">
+              <label for="address">Address *</label>
+              <textarea class="input" id="address" rows="2" required placeholder="House / street, city"></textarea>
+              <div class="field-error" data-error-for="address">Please enter an address.</div>
+            </div>
+
+            <div class="field">
+              <label for="cnic">CNIC number *</label>
+              <input class="input" id="cnic" required placeholder="XXXXX-XXXXXXX-X" maxlength="15">
+              <div class="field-error" data-error-for="cnic">Enter a valid CNIC as XXXXX-XXXXXXX-X.</div>
+            </div>
+
+            <div class="field">
+              <label for="mobile">Mobile number <span style="color:var(--ink-faint);font-weight:400;">(optional)</span></label>
+              <input class="input" id="mobile" placeholder="03XX-XXXXXXX">
+            </div>
+
+            <div class="field">
+              <label for="designation">Designation / job title <span style="color:var(--ink-faint);font-weight:400;">(optional)</span></label>
+              <input class="input" id="designation" placeholder="e.g. Senior Teacher (Math), Head Peon, Security Guard">
+            </div>
+
+            <div class="field">
+              <label for="joiningDate">Joining date <span style="color:var(--ink-faint);font-weight:400;">(optional)</span></label>
+              <input class="input" type="date" id="joiningDate">
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="resetBtn">Reset</button>
+            <button type="submit" class="btn btn-primary" id="saveBtn">Save Staff</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h3>Live ID Card Preview</h3></div>
+      <div class="panel-body" style="display:flex;justify-content:center;">
+        <div id="cardPreviewHolder"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="utils.js"></script>
+<script src="auth.js"></script>
+<script src="layout.js"></script>
+<script src="idcard.js"></script>
+<script src="add-staff.js"></script>
+</body>
+</html>

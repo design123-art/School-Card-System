@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login — School ID Card Management System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="auth-page">
+  <div class="auth-visual">
+    <div class="auth-brand">
+      <div class="auth-brand-mark">🪪</div>
+      School ID System
+    </div>
+    <div class="auth-headline">
+      <h1>One system for every ID card your school issues.</h1>
+      <p>Manage student and staff records side by side, generate professional identity cards, and print full A4 batches in minutes — all from one secure dashboard.</p>
+    </div>
+    <div class="auth-meta">Admin access only · Records stored securely in Firestore</div>
+  </div>
+
+  <div class="auth-form-side">
+    <div class="auth-card">
+      <h2>Welcome back</h2>
+      <span class="auth-sub">Sign in to manage your school's ID cards.</span>
+
+      <div class="auth-error-banner" id="authErrorBanner"></div>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input class="input" type="email" id="email" name="email" placeholder="admin@yourschool.edu" autocomplete="username" required>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="input-password-wrap">
+            <input class="input" type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+            <button type="button" class="toggle-visibility" id="togglePassword">Show</button>
+          </div>
+        </div>
+
+        <div class="row-between">
+          <label class="checkbox-row">
+            <input type="checkbox" id="rememberMe">
+            Remember me
+          </label>
+          <button type="button" class="link-btn" id="forgotPasswordLink">Forgot password?</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="loginSubmit">Sign in</button>
+      </form>
+
+      <div class="auth-footer-note">Access is restricted to authorized school administrators.</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="utils.js"></script>
+<script src="auth.js"></script>
+<script>initLoginPage();</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+/* ============================================================
+   PRINT STYLESHEET
+   A4 page = 210mm x 297mm. 8 cards per page, 2 columns x 4 rows.
+   Card size: CR80-ish badge, 90mm x 55mm (fits 2x4 with margins).
+   ============================================================ */
+
+.print-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto 14px;
+  background: #fff;
+  padding: 12mm 10mm;
+  display: grid;
+  grid-template-columns: repeat(2, 90mm);
+  grid-template-rows: repeat(4, 62mm);
+  gap: 6mm 10mm;
+  justify-content: center;
+  page-break-after: always;
+}
+.print-sheet:last-child { page-break-after: auto; }
+
+.pcard {
+  width: 90mm;
+  height: 55mm;
+  border: 0.4mm solid #cbd5e1;
+  border-radius: 3mm;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.pcard-header {
+  background: linear-gradient(120deg, #123170, #1D4CA8);
+  color: #fff;
+  padding: 2.6mm 3mm;
+  display: flex; align-items: center; gap: 2.4mm;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.pcard-header .logo {
+  width: 8mm; height: 8mm; border-radius: 1.6mm;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; flex-shrink: 0; border: 0.3mm solid rgba(255,255,255,0.4);
+}
+.pcard-header .logo img { width: 100%; height: 100%; object-fit: cover; }
+.pcard-header .school-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 3.1mm; line-height: 1.15; }
+.pcard-header .school-addr { font-size: 2.1mm; color: rgba(255,255,255,0.8); line-height: 1.25; margin-top: 0.3mm; }
+.pcard-strip { height: 1mm; background: #C9A24B; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+.pcard-body { display: flex; gap: 2.6mm; padding: 2.6mm 3mm; flex: 1; }
+.pcard-photo {
+  width: 16mm; height: 19.5mm; border-radius: 1.4mm; object-fit: cover;
+  border: 0.4mm solid #E3E8F0; background: #EEF1F8; flex-shrink: 0;
+}
+.pcard-info { flex: 1; min-width: 0; }
+.pcard-info .role-tag {
+  display: inline-block; max-width: 100%; font-size: 1.7mm; font-weight: 700; letter-spacing: 0.2px;
+  color: #163B85; background: #E7EEFC; padding: 0.4mm 1.4mm; border-radius: 0.8mm;
+  margin-bottom: 0.8mm; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.pcard-info .t-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 3.2mm; color: #101828; line-height: 1.15; }
+.pcard-info .t-desig { font-size: 2.3mm; color: #163B85; font-weight: 600; margin-top: 0.3mm; }
+.pcard-info dl { margin: 1.4mm 0 0; display: grid; grid-template-columns: 9mm 1fr; gap: 0.5mm 1.4mm; }
+
+/* Student print card: denser 2-column grid for the extra academic fields */
+.pcard-info .t-sub { font-size: 2mm; color: #475467; font-weight: 600; margin-top: 0.2mm; }
+.pgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5mm 2mm; margin-top: 0.8mm; }
+.pgrid .cell { display: flex; flex-direction: column; min-width: 0; }
+.pgrid .cell.span2 { grid-column: span 2; }
+.pgrid .k { font-size: 1.6mm; color: #98A2B3; text-transform: uppercase; font-weight: 700; }
+.pgrid .v { font-size: 2mm; color: #101828; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pcard-info dt { font-size: 1.7mm; color: #98A2B3; font-weight: 600; text-transform: uppercase; }
+.pcard-info dd { margin: 0; font-size: 2mm; color: #101828; line-height: 1.25; word-break: break-word; }
+
+.pcard-footer {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding: 1mm 3mm 2.2mm; font-size: 1.7mm; color: #475467;
+}
+.pcard-footer .sig { text-align: center; width: 20mm; }
+.pcard-footer .sig .line { border-top: 0.3mm solid #CBD5E1; margin-bottom: 0.7mm; }
+
+@media print {
+  @page { size: A4; margin: 0; }
+  body * { visibility: hidden; }
+  #printArea, #printArea * { visibility: visible; }
+  #printArea { position: absolute; left: 0; top: 0; width: 100%; }
+  .no-print { display: none !important; }
+}
+
+@media screen {
+  .print-preview-wrap {
+    background: #94a3b8;
+    padding: 20px 0 40px;
+  }
+}

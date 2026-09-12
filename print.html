@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Print Cards — School ID Card Management System</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="print.css">
+</head>
+<body>
+
+<div id="app-shell" class="app-shell"></div>
+
+<template id="tpl-print-body">
+  <div class="page-head no-print">
+    <div>
+      <h1>Print Cards</h1>
+      <div class="sub">8 ID cards per A4 page, arranged automatically — for students, staff, or both.</div>
+    </div>
+  </div>
+
+  <div class="panel no-print" style="margin-bottom:20px;">
+    <div class="panel-body">
+      <div class="print-toolbar">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <div class="btn-group" style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn btn-secondary btn-sm" id="modeStudentsBtn">All Students</button>
+            <button class="btn btn-secondary btn-sm" id="modeStaffBtn">All Staff</button>
+            <button class="btn btn-secondary btn-sm" id="modeBothBtn">All (Students + Staff)</button>
+            <button class="btn btn-secondary btn-sm" id="modeSelectedBtn">Selected Only</button>
+          </div>
+          <span class="count-chip" id="cardCountChip">0 cards</span>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn btn-secondary" id="printPreviewBtn">👁 Print Preview</button>
+          <button class="btn btn-secondary" id="downloadPdfBtn">⬇ Download PDF</button>
+          <button class="btn btn-primary" id="printNowBtn">🖶 Print All Cards</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="print-preview-wrap" id="printPreviewWrap">
+    <div id="printArea"></div>
+  </div>
+</template>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="firebase-config.js"></script>
+<script src="utils.js"></script>
+<script src="auth.js"></script>
+<script src="layout.js"></script>
+<script src="idcard.js"></script>
+<script src="print.js"></script>
+</body>
+</html>

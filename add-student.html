@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Student — School ID Card Management System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app-shell" class="app-shell"></div>
+
+<template id="tpl-add-student-body">
+  <div class="page-head">
+    <div>
+      <h1 id="formTitle">Add Student</h1>
+      <div class="sub">Fill in the student's details — the ID card preview updates as you type.</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-head"><h3>Student Information</h3></div>
+      <div class="panel-body">
+        <form id="studentForm" novalidate>
+
+          <div class="field">
+            <label>Student photo</label>
+            <div class="photo-upload">
+              <div class="photo-preview" id="photoPreview">📷</div>
+              <div class="photo-upload-actions">
+                <input type="file" id="photoInput" accept="image/*" class="visually-hidden">
+                <button type="button" class="btn btn-secondary btn-sm" id="photoPickBtn">Upload photo</button>
+                <span class="hint">JPG or PNG. Compressed automatically for storage.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-grid" style="margin-top:20px;">
+            <div class="field span-2" style="margin-bottom:0;"><h4 style="font-size:13px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;">Basic Information</h4></div>
+
+            <div class="field">
+              <label for="studentName">Student name *</label>
+              <input class="input" id="studentName" required placeholder="e.g. Ali Raza">
+              <div class="field-error" data-error-for="studentName">Please enter the student's name.</div>
+            </div>
+
+            <div class="field">
+              <label for="fatherName">Father name *</label>
+              <input class="input" id="fatherName" required placeholder="e.g. Ahmed Raza">
+              <div class="field-error" data-error-for="fatherName">Please enter the father's name.</div>
+            </div>
+
+            <div class="field span-2" style="margin-bottom:0;margin-top:6px;"><h4 style="font-size:13px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;">Academic Information</h4></div>
+
+            <div class="field">
+              <label for="grNumber">GR number *</label>
+              <input class="input" id="grNumber" required placeholder="e.g. GR-2024-014">
+              <div class="field-error" data-error-for="grNumber">Please enter the GR number.</div>
+            </div>
+
+            <div class="field">
+              <label for="rollNumber">Roll number *</label>
+              <input class="input" id="rollNumber" required placeholder="e.g. 21">
+              <div class="field-error" data-error-for="rollNumber">Please enter the roll number.</div>
+            </div>
+
+            <div class="field">
+              <label for="class">Class *</label>
+              <input class="input" id="class" required placeholder="e.g. 5 or Grade 5">
+              <div class="field-error" data-error-for="class">Please enter the class.</div>
+            </div>
+
+            <div class="field">
+              <label for="section">Section *</label>
+              <input class="input" id="section" required placeholder="e.g. A">
+              <div class="field-error" data-error-for="section">Please enter the section.</div>
+            </div>
+
+            <div class="field">
+              <label for="shift">Shift *</label>
+              <select class="input" id="shift" required>
+                <option value="Morning">Morning</option>
+                <option value="Evening">Evening</option>
+              </select>
+            </div>
+
+            <div class="field span-2" style="margin-bottom:0;margin-top:6px;"><h4 style="font-size:13px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;">Personal Information</h4></div>
+
+            <div class="field">
+              <label for="dateOfBirth">Date of birth *</label>
+              <input class="input" type="date" id="dateOfBirth" required>
+              <div class="field-error" data-error-for="dateOfBirth">Please enter the date of birth.</div>
+            </div>
+
+            <div class="field">
+              <label for="parentContact">Parent contact number *</label>
+              <input class="input" id="parentContact" required placeholder="03XX-XXXXXXX">
+              <div class="field-error" data-error-for="parentContact">Please enter a contact number.</div>
+            </div>
+
+            <div class="field span-2">
+              <label for="address">Address *</label>
+              <textarea class="input" id="address" rows="2" required placeholder="House / street, city"></textarea>
+              <div class="field-error" data-error-for="address">Please enter an address.</div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="resetBtn">Reset</button>
+            <button type="submit" class="btn btn-primary" id="saveBtn">Save Student</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h3>Live ID Card Preview</h3></div>
+      <div class="panel-body" style="display:flex;justify-content:center;">
+        <div id="cardPreviewHolder"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="utils.js"></script>
+<script src="auth.js"></script>
+<script src="layout.js"></script>
+<script src="idcard.js"></script>
+<script src="add-student.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Settings — School ID Card Management System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app-shell" class="app-shell"></div>
+
+<template id="tpl-settings-body">
+  <div class="page-head">
+    <div>
+      <h1>School Settings</h1>
+      <div class="sub">This information appears on the header of every student and staff ID card.</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-head"><h3>School Information</h3></div>
+      <div class="panel-body">
+        <form id="settingsForm" novalidate>
+
+          <div class="field logo-upload">
+            <label>School logo</label>
+            <div class="photo-upload">
+              <div class="photo-preview" id="logoPreview">🏫</div>
+              <div class="photo-upload-actions">
+                <input type="file" id="logoInput" accept="image/*" class="visually-hidden">
+                <button type="button" class="btn btn-secondary btn-sm" id="logoPickBtn">Upload logo</button>
+                <span class="hint">Square image recommended. Compressed for storage.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-grid" style="margin-top:20px;">
+            <div class="field span-2">
+              <label for="schoolName">School name *</label>
+              <input class="input" id="schoolName" required placeholder="e.g. Green Valley Public School">
+              <div class="field-error" data-error-for="schoolName">Please enter the school name.</div>
+            </div>
+
+            <div class="field span-2">
+              <label for="schoolAddress">School address *</label>
+              <textarea class="input" id="schoolAddress" rows="2" required placeholder="Street, city, region"></textarea>
+              <div class="field-error" data-error-for="schoolAddress">Please enter the school address.</div>
+            </div>
+
+            <div class="field">
+              <label for="schoolPhone">School phone *</label>
+              <input class="input" id="schoolPhone" required placeholder="e.g. 042-1234567">
+              <div class="field-error" data-error-for="schoolPhone">Please enter a phone number.</div>
+            </div>
+
+            <div class="field">
+              <label for="schoolEmail">School email <span style="color:var(--ink-faint);font-weight:400;">(optional)</span></label>
+              <input class="input" type="email" id="schoolEmail" placeholder="info@yourschool.edu">
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="saveSettingsBtn">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h3>Card Preview</h3></div>
+      <div class="panel-body" style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+        <div id="settingsCardPreviewStudent"></div>
+        <div id="settingsCardPreviewStaff"></div>
+        <p style="font-size:12.5px;color:var(--ink-faint);text-align:center;">
+          Saving here instantly updates the header on every student and staff ID card.
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="utils.js"></script>
+<script src="auth.js"></script>
+<script src="layout.js"></script>
+<script src="idcard.js"></script>
+<script src="settings.js"></script>
+</body>
+</html>
